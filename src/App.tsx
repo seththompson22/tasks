@@ -16,23 +16,52 @@ function App(): JSX.Element {
 
             <Container>
                 <Row>
-                    <Col>
-                        <img
-                            src={memeimage}
-                            alt="Meme that reads the html does not need to load css & js if the html and css are in js"
-                        />
-                    </Col>
-                    <Col>
-                        <h1 className="header">Project Technologies:</h1>
-                        <ul>
-                            <li>Typescript</li>
-                            <li>HTML</li>
-                            <li>CSS</li>
-                        </ul>
-                        <Button onClick={() => console.log("Hello World!")}>
-                            Log Hello World
-                        </Button>
-                    </Col>
+                    <div
+                        style={{
+                            width: "50%",
+                            height: "400px",
+                            backgroundColor: "red",
+                            border: "5px solid gray"
+                        }}
+                    >
+                        <Col>
+                            <img
+                                src={memeimage}
+                                alt="Meme that reads the html does not need to load css & js if the html and css are in js"
+                                style={{
+                                    width: "500px",
+                                    marginTop: "50px"
+                                }}
+                            />
+                        </Col>
+                    </div>
+                    <div
+                        style={{
+                            width: "50%",
+                            height: "400px",
+                            backgroundColor: "red",
+                            border: "5px solid black"
+                        }}
+                    >
+                        <Col>
+                            <h1
+                                className="header"
+                                style={{
+                                    marginTop: "50px"
+                                }}
+                            >
+                                Project Technologies:
+                            </h1>
+                            <ul>
+                                <li>Typescript</li>
+                                <li>HTML</li>
+                                <li>CSS</li>
+                            </ul>
+                            <Button onClick={() => console.log("Hello World!")}>
+                                Log Hello World
+                            </Button>
+                        </Col>
+                    </div>
                 </Row>
             </Container>
         </div>
