@@ -51,7 +51,12 @@ export const removeDollars = (amounts: string[]): number[] => {
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
     // filter out ?, then map strings to uppercase if they end in !
-    return [];
+    const no_question: string[] = messages.filter(
+        (message: string): boolean => !message.includes("?")
+    );
+    return no_question.map((message: string): string =>
+        message.includes("!") ? message.toUpperCase() : message
+    );
 };
 
 /**
