@@ -101,7 +101,17 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    // find "sum=" then concatinate all integers in 'int+int+int' form
+    let sum = 0;
+    addends.map((value: number, index: number): number => {
+        sum += value;
+        return value;
+    });
+    let str_nums: string = addends.join("+");
+    if (addends.length == 0) {
+        str_nums = "0";
+    }
+    return sum.toString() + "=" + str_nums;
 }
 
 /**
@@ -114,5 +124,28 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    // map function with accumulator variable to get  sum, with if condition inside to check if there is or is not a negative
+
+    // use slice function to cut out - num to length-1
+    // use find to find the first negative digit
+    const negative: number | undefined = values.find(
+        (value: number): boolean => value < 0
+    );
+    let hasNegative = false;
+    let sum = 0;
+    values.map((value: number): number => {
+        if (value === negative) {
+            hasNegative = true;
+        }
+        if (!hasNegative) {
+            sum += value;
+        }
+        return value;
+    });
+    if (negative === undefined) {
+        // add sum to end
+        return [...values, sum];
+    } else {
+        return [...values.slice(negative, values.length - 1), sum];
+    }
 }
