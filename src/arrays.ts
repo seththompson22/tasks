@@ -7,7 +7,19 @@ import { parse } from "path";
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    // if length >= 1, filter array and return only first and last
+    // else means length == 0, return an empty array
+
+    if (numbers.length > 1) {
+        return numbers.filter(
+            (num: number): boolean =>
+                num == numbers[0] || num == numbers[numbers.length - 1]
+        );
+    } else if (numbers.length === 1) {
+        return [numbers[0], numbers[0]];
+    } else {
+        return [];
+    }
 }
 
 /**
@@ -64,7 +76,7 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    return words.filter((word: string): boolean => word.length < 4).length;
 }
 
 /**
@@ -73,7 +85,12 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    return (
+        colors.filter(
+            (color: string): boolean =>
+                color != "red" && color != "blue" && color != "green"
+        ).length == 0
+    );
 }
 
 /**
