@@ -103,7 +103,7 @@ export function allRGB(colors: string[]): boolean {
 export function makeMath(addends: number[]): string {
     // find "sum=" then concatinate all integers in 'int+int+int' form
     let sum = 0;
-    addends.map((value: number, index: number): number => {
+    addends.map((value: number): number => {
         sum += value;
         return value;
     });
@@ -124,28 +124,39 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    // map function with accumulator variable to get  sum, with if condition inside to check if there is or is not a negative
-
-    // use slice function to cut out - num to length-1
-    // use find to find the first negative digit
-    const negative: number | undefined = values.find(
-        (value: number): boolean => value < 0
+    //check for negative
+    //if no negative, then add sum to end
+    // if negative, add sum before negative after the negative
+    if (values.length === 0) {
+        return [0];
+    }
+    const neg_index: number = values.findIndex(
+        (val: number): boolean => val < 0
     );
-    let hasNegative = false;
-    let sum = 0;
-    values.map((value: number): number => {
-        if (value === negative) {
-            hasNegative = true;
-        }
-        if (!hasNegative) {
-            sum += value;
-        }
-        return value;
-    });
-    if (negative === undefined) {
-        // add sum to end
+    let index = 0;
+    if (neg_index === -1) {
+        // use length of negative
+        index = values.length;
+        const sum: number = values.reduce(
+            (currentTotal: number, num: number) => currentTotal + num,
+            0
+        );
         return [...values, sum];
     } else {
-        return [...values.slice(negative, values.length - 1), sum];
+        index = neg_index;
+        const beginning: number[] = values.filter(
+            (val: number, curr_i: number): boolean => curr_i <= index
+        );
+        const end: number[] = values.filter(
+            (val: number, curr_i: number): boolean => curr_i > index
+        );
+        let sum = 0;
+        beginning.map((value: number, curr_i: number): number => {
+            if (curr_i < beginning.length - 1) {
+                sum += value;
+            }
+            return value;
+        });
+        return [...beginning, sum, ...end];
     }
 }
