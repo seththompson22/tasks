@@ -73,8 +73,6 @@ export function toShortForm(question: Question): string {
     } else {
         return combinedStr.substring(0, stopAt + 1);
     }
-
-    return (question.id + ": " + question.name).substring(0, 11);
 }
 
 /**
