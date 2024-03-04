@@ -20,6 +20,7 @@ function ChangeColor({
 
 function ColorPreview({
     colorIndex,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     setColorIndex
 }: {
     colorIndex: number;
