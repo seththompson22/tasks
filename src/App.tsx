@@ -109,18 +109,20 @@ function App(): JSX.Element {
             <hr />
             <TwoDice></TwoDice>
             <hr />
+            <DoubleHalf></DoubleHalf>
+            <hr />
             <ChangeType></ChangeType>
-            <br />
+            <hr />
             <RevealAnswer></RevealAnswer>
-            <br />
+            <hr />
             <StartAttempt></StartAttempt>
-            <br />
+            <hr />
             <TwoDice></TwoDice>
-            <br />
+            <hr />
             <CycleHoliday></CycleHoliday>
-            <br />
+            <hr />
             <Counter></Counter>
-            <br />
+            <hr />
         </div>
     );
 }
