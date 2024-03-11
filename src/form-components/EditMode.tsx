@@ -43,6 +43,7 @@ export function EditMode(): JSX.Element {
                             />
                         </Form.Group>
                     ) : (
+                        // eslint-disable-next-line no-extra-parens
                         `${name} is ${isStudent ? "" : "not"} a student`
                     )}
                 </p>
