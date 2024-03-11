@@ -11,7 +11,12 @@ export function GiveAttempts(): JSX.Element {
             : setAttemptsLeft(0);
     }
     function increaseAttempt() {
-        setAttemptsLeft(attemptsLeft + requestedAttempts);
+        if (requestedAttempts >= 0) {
+            // only if attempt is positive it will add it
+            setAttemptsLeft(attemptsLeft + requestedAttempts);
+        } else {
+            alert("Cannot Enter Negative Attempts!!!");
+        }
     }
     return (
         <div>
